@@ -19,7 +19,14 @@ namespace GestorTienda
         public Login()
         {
             InitializeComponent();
+
+            ControladorPrincipal controlador = new ControladorPrincipal();
+            bool tablas = controlador.ComprobarTablas();
+
+            if (!tablas) controlador.CrearTablas();
         }
+
+
 
        
         private void Button1_Click(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace GestorTienda
                 string usuario =config.UsuarioDB;
                 string passwd = config.Passwd;*/
            
-           MySqlConnection conectar = new MySqlConnection("server=127.0.0.1; database=gestorDB; Uid=root; pwd=;");
+           MySqlConnection conectar = new MySqlConnection("server=127.0.0.1; database=gestordb; Uid=root; pwd=;");
 
             conectar.Open();
             return conectar;

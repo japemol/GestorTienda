@@ -1,26 +1,43 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
-using System.Configuration;
 
 namespace GestorTienda
 {
-    public partial class Config_Form : Form
+    class ControladorPrincipal
     {
-        public Config_Form()
-        {
-            InitializeComponent();
-            
-        }
 
-        private void CrearTablas(object sender, EventArgs e)
+        public bool ComprobarTablas()
+        {
+            bool existen = false;
+
+            MySqlConnection conexion = Conexion.Conectar();
+            try
+            {
+                MySqlCommand comando = conexion.CreateCommand();
+                string sql = "Select dni from empleados; Select id from incidencias; Select id_articulo from productos; Select id from ventas";
+
+                comando.CommandText = sql;
+
+                comando.ExecuteNonQuery();
+
+                existen = true;
+            }
+            catch (Exception ex)
+            {
+                ex.GetType();
+                existen = false;
+            }
+
+            return existen;
+        }
+            
+
+    public void CrearTablas()
         {
             MySqlConnection conexion = Conexion.Conectar();
             try
@@ -40,16 +57,7 @@ namespace GestorTienda
             {
                 MessageBox.Show(ex.GetBaseException().ToString());
             }
-           
-        }
 
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            /*DB config = new DB();
-
-            config.NombreDB = nombredb_text.ToString();
-            config.Passwd = passwd_text.ToString();
-            config.UsuarioDB = usuario_text.ToString();*/
         }
     }
 }

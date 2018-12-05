@@ -57,6 +57,7 @@
     <Compile Include="Config_Form.Designer.cs">
       <DependentUpon>Config_Form.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControladorPrincipal.cs" />
     <Compile Include="ControladorProductos.cs" />
     <Compile Include="Controlador_Empleado.cs" />
     <Compile Include="Controlador_Empleados.cs" />
