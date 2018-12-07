@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
+using System.Xml;
 
 namespace GestorTienda
 {
@@ -45,11 +46,47 @@ namespace GestorTienda
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            /*DB config = new DB();
+            
 
-            config.NombreDB = nombredb_text.ToString();
-            config.Passwd = passwd_text.ToString();
-            config.UsuarioDB = usuario_text.ToString();*/
+            XmlTextWriter escribir = new XmlTextWriter(@"ConfiguracionDB.xml", Encoding.UTF8);
+            escribir.Formatting = Formatting.Indented;
+            escribir.WriteStartDocument();
+//Abrir etiqueta raiz: configuracion
+            escribir.WriteStartElement("configuracion");
+
+//Abrir etiqueta: usuario
+            escribir.WriteStartElement("usuario");
+            escribir.WriteString(usuario_text.Text);
+            escribir.WriteEndElement(); //Cierra etiqueta
+
+//Abrir etiqueta:password
+            escribir.WriteStartElement("password");
+            escribir.WriteString(passwd_text.Text);
+            escribir.WriteEndElement(); //Cierra etiqueta
+
+//Abrir etiqueta: nombreDB
+            escribir.WriteStartElement("nombreDB");
+            escribir.WriteString(nombredb_text.Text);
+            escribir.WriteEndElement(); //Cierra etiqueta
+
+            escribir.WriteEndElement();//Cierra etiqueta raiz configuracion
+
+            escribir.Close(); //Cerrar conexion con archivo
+
+            Form admin = new ConfirmacionAdmin();
+            admin.Show();
+
+
+            this.Close();
+            
+
+           
+        }
+
+        private void admin_Click(object sender, EventArgs e)
+        {
+            Form empleado = new EmpleadoNuevo();
+            empleado.Show();
         }
     }
 }

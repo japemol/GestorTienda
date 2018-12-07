@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace GestorTienda
 {
@@ -20,12 +21,61 @@ namespace GestorTienda
         {
             InitializeComponent();
 
+            bool configuracion = ComprobarConfiguracion();
+
+            if (!configuracion)
+            {
+                Form config = new Config_Form();
+                config.Show();
+            }
+            else
+            {
+                Tablas();
+            }
+            
+        }
+
+        private bool ComprobarConfiguracion()
+        {
+
+            XmlDocument xDoc = new XmlDocument();
+
+
+            try { xDoc.Load(@"ConfiguracionDB.xml"); } catch (Exception e) { e.GetBaseException(); return false; };
+
+
+            
+           
+           
+            XmlNodeList nodo = xDoc.GetElementsByTagName("usuario");
+            XmlNodeList nodo1 = xDoc.GetElementsByTagName("password");
+            XmlNodeList nodo2 = xDoc.GetElementsByTagName("nombreDB");
+
+
+            string usuario = nodo[0].InnerText;
+            string passwd = nodo1[0].InnerText;
+            string nombreDB = nodo2[0].InnerText;
+
+            if (usuario.Equals("") || nombreDB.Equals(""))
+            {
+                return false;
+
+
+            }
+            else
+            {
+                return true;
+            }
+
+        }
+
+        private void Tablas()
+        {
             ControladorPrincipal controlador = new ControladorPrincipal();
             bool tablas = controlador.ComprobarTablas();
 
             if (!tablas) controlador.CrearTablas();
         }
-
 
 
        

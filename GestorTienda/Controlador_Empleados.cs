@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -9,16 +10,19 @@ using System.Windows.Forms;
 namespace GestorTienda
 {
    public class ControladorEmpleados{
+        readonly string key = " gc % 3ñXap{g9KgDntSN@3";
 
         public void NuevoEmpleado(string dni, string nombre, string apellido1, string apellido2, string telefono, string direccion,string cp, string usuario, string password,string correo, string privilegios)
         {
+
+
 
            MySqlConnection conexion = Conexion.Conectar();
 
             MySqlCommand comando = conexion.CreateCommand();
 
             string query =
-           "INSERT INTO empleados (dni, nombre, apellido1, apellido2,`e-mail`,usuario,password,telefono,cp,direccion,privilegios) Values (@dni,@nombre,@apellido1,@apellido2,@correo,@usuario,@password,@telefono,@cp,@direccion, @privilegios)";
+           "INSERT INTO empleados (dni, nombre, apellido1, apellido2,`e - mail`,usuario,password,telefono,cp,direccion,privilegios) Values (@dni,@nombre,@apellido1,@apellido2,@correo,@usuario,@password,@telefono,@cp,@direccion, @privilegios)";
             
 
             try
@@ -34,6 +38,8 @@ namespace GestorTienda
                 comando.Parameters.AddWithValue("@cp", cp);
                 comando.Parameters.AddWithValue("@correo", correo);
                 comando.Parameters.AddWithValue("@usuario", usuario);
+
+                password = Encrypt(password);
                 comando.Parameters.AddWithValue("@password",password);
                 comando.Parameters.AddWithValue("@privilegios", privilegios);
 
@@ -52,7 +58,33 @@ namespace GestorTienda
            
         }
 
-        
+        private string Encrypt(string password)
+        {
+            byte[] passwdEncrypt = UTF8Encoding.UTF8.GetBytes(password);
+            byte[] keyByte = UTF8Encoding.UTF8.GetBytes(key);
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+
+            keyByte = md5.ComputeHash(keyByte);
+
+            md5.Clear();
+
+            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
+            tdes.Key = keyByte;
+            tdes.Mode = CipherMode.ECB;
+            tdes.Padding = PaddingMode.PKCS7;
+
+            ICryptoTransform transform = tdes.CreateEncryptor();
+
+            byte[] passByte = transform.TransformFinalBlock(passwdEncrypt, 0, passwdEncrypt.Length);
+
+            tdes.Clear();
+
+            password = Convert.ToBase64String(passByte,0,passByte.Length);
+
+            return password;
+        }
+
+
 
         public string[,] Select(int offset)
         {
