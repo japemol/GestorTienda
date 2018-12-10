@@ -57,14 +57,7 @@ namespace GestorTienda
             if (usuario.Equals("") || nombreDB.Equals(""))
             {
                
-
-                XmlDocument xruta = new XmlDocument();
-
-
                 try { xDoc.Load(@"personalizar.xml"); } catch (Exception e) { e.GetBaseException(); };
-
-
-
 
 
                 XmlNodeList path = xDoc.GetElementsByTagName("logo");
@@ -77,13 +70,8 @@ namespace GestorTienda
             }
             else
             {
-                XmlDocument xruta = new XmlDocument();
-
-
+               
                 try { xDoc.Load(@"personalizar.xml"); } catch (Exception e) { e.GetBaseException(); };
-
-
-
 
 
                 XmlNodeList path = xDoc.GetElementsByTagName("logo");
