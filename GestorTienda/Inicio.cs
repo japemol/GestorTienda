@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Xml;
 
 namespace GestorTienda
 {
@@ -16,18 +17,61 @@ namespace GestorTienda
     {
 
         string privilegios;
+        Color color1;
+        Color color2;
+        string ruta;
 
         public Home(string privilegios)
         {
-            InitializeComponent();
+
+            ComprobarPersonalizacion();
+            
+            InitializeComponent(color1, color2, ruta);
             this.privilegios = privilegios;
             
         }
 
-      
+        private void ComprobarPersonalizacion()
+        {
+            XmlDocument xDoc = new XmlDocument();
 
-       
-       
+
+            try { xDoc.Load(@"personalizar.xml"); } catch (Exception e) { e.GetBaseException(); };
+
+
+
+
+
+            XmlNodeList nodo = xDoc.GetElementsByTagName("logo");
+            XmlNodeList nodo1 = xDoc.GetElementsByTagName("color1");
+            XmlNodeList nodo2 = xDoc.GetElementsByTagName("color2");
+
+
+
+            
+            try
+            {
+                ruta = nodo[0].InnerText;
+                color1 = Color.FromArgb(Int32.Parse(nodo1[0].InnerText));
+                color2 = Color.FromArgb(Int32.Parse(nodo2[0].InnerText));
+
+                
+            }
+            catch (Exception e)
+            {
+                color1 = Color.FromArgb((int)(byte)(64), (int)(byte)(64), (int)(byte)64);
+                e.GetBaseException();
+            }
+                      
+             
+
+        }
+
+
+
+
+
+
         private void AbrirFormulario(object formNuevo)
         {
            if(this.panel_contenedor.Controls.Count > 0)

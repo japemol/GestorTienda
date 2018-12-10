@@ -1,4 +1,9 @@
-﻿namespace GestorTienda
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Xml;
+
+namespace GestorTienda
 {
     partial class Home
     {
@@ -26,8 +31,12 @@
         /// Método necesario para admitir el Diseñador. No se puede modificar
         /// el contenido de este método con el editor de código.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(Color color1, Color color2, string ruta)
         {
+            
+            
+            
+
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -44,8 +53,8 @@
             this.SuspendLayout();
             // 
             // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            //
+            this.panel1.BackColor = color1;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -54,7 +63,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.BackColor = color1;
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.pictureBox2);
@@ -75,7 +84,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.textBox1.BackColor = color1;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -98,7 +107,7 @@
             // 
             // empleados
             // 
-            this.empleados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.empleados.BackColor = color1;
             this.empleados.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.empleados.Enabled = false;
             this.empleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -112,7 +121,15 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::GestorTienda.Properties.Resources.logo;
+            if (ruta.Equals(null) || ruta.Equals(""))
+            {
+                this.pictureBox2.Image = global::GestorTienda.Properties.Resources.logo;
+            }
+            else
+            {
+                this.pictureBox2.Image = Image.FromFile(ruta);
+            }
+            
             this.pictureBox2.Location = new System.Drawing.Point(35, 6);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(123, 78);
@@ -151,6 +168,8 @@
             this.ResumeLayout(false);
 
         }
+
+       
 
         #endregion
 

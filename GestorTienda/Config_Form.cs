@@ -46,7 +46,9 @@ namespace GestorTienda
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            
+            EncryptAndDecrypt encrypt = new EncryptAndDecrypt();
+
+            encrypt.GenerarKey();
 
             XmlTextWriter escribir = new XmlTextWriter(@"ConfiguracionDB.xml", Encoding.UTF8);
             escribir.Formatting = Formatting.Indented;
@@ -59,9 +61,11 @@ namespace GestorTienda
             escribir.WriteString(usuario_text.Text);
             escribir.WriteEndElement(); //Cierra etiqueta
 
-//Abrir etiqueta:password
+            //Abrir etiqueta:password
+            
+            string pass = encrypt.Encrypt(passwd_text.Text);
             escribir.WriteStartElement("password");
-            escribir.WriteString(passwd_text.Text);
+            escribir.WriteString(pass);
             escribir.WriteEndElement(); //Cierra etiqueta
 
 //Abrir etiqueta: nombreDB
@@ -78,10 +82,19 @@ namespace GestorTienda
 
 
             this.Close();
-            
 
+            Tablas();
            
         }
+
+        private void Tablas()
+        {
+            ControladorPrincipal controlador = new ControladorPrincipal();
+            bool tablas = controlador.ComprobarTablas();
+
+            if (!tablas) controlador.CrearTablas();
+        }
+
 
         private void admin_Click(object sender, EventArgs e)
         {

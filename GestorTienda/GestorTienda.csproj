@@ -39,6 +39,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -86,6 +87,7 @@
     <Compile Include="Empleados.Designer.cs">
       <DependentUpon>Empleados.cs</DependentUpon>
     </Compile>
+    <Compile Include="EncryptAndDecrypt.cs" />
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +105,12 @@
     </Compile>
     <Compile Include="NuevaIncidencia.Designer.cs">
       <DependentUpon>NuevaIncidencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personalizar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personalizar.Designer.cs">
+      <DependentUpon>Personalizar.cs</DependentUpon>
     </Compile>
     <Compile Include="Productos.cs">
       <SubType>Form</SubType>
@@ -136,6 +144,9 @@
     <EmbeddedResource Include="NuevaIncidencia.resx">
       <DependentUpon>NuevaIncidencia.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Personalizar.resx">
+      <DependentUpon>Personalizar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Productos.resx">
       <DependentUpon>Productos.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +177,7 @@
     <Content Include="ConfiguracionDB.xml">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\%24this.Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

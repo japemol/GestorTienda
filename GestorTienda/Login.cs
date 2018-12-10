@@ -16,10 +16,9 @@ namespace GestorTienda
     {
 
 
-
+        string ruta;
         public Login()
         {
-            InitializeComponent();
 
             bool configuracion = ComprobarConfiguracion();
 
@@ -28,11 +27,10 @@ namespace GestorTienda
                 Form config = new Config_Form();
                 config.Show();
             }
-            else
-            {
-                Tablas();
-            }
-            
+
+
+            InitializeComponent(ruta);
+
         }
 
         private bool ComprobarConfiguracion()
@@ -58,29 +56,58 @@ namespace GestorTienda
 
             if (usuario.Equals("") || nombreDB.Equals(""))
             {
-                return false;
+               
 
+                XmlDocument xruta = new XmlDocument();
+
+
+                try { xDoc.Load(@"personalizar.xml"); } catch (Exception e) { e.GetBaseException(); };
+
+
+
+
+
+                XmlNodeList path = xDoc.GetElementsByTagName("logo");
+
+
+                ruta = path[0].InnerText;
+
+                return false;
 
             }
             else
             {
+                XmlDocument xruta = new XmlDocument();
+
+
+                try { xDoc.Load(@"personalizar.xml"); } catch (Exception e) { e.GetBaseException(); };
+
+
+
+
+
+                XmlNodeList path = xDoc.GetElementsByTagName("logo");
+
+
+                ruta = path[0].InnerText;
+
                 return true;
             }
 
+
+           
+               
+
         }
 
-        private void Tablas()
-        {
-            ControladorPrincipal controlador = new ControladorPrincipal();
-            bool tablas = controlador.ComprobarTablas();
-
-            if (!tablas) controlador.CrearTablas();
-        }
+       
 
 
        
         private void Button1_Click(object sender, EventArgs e)
         {
+            
+
             Controlador_Login logear= new Controlador_Login();
 
             string usuario = textBoxUser.Text.ToString();
@@ -104,8 +131,8 @@ namespace GestorTienda
         private void Config_Click(object sender, EventArgs e)
         {
 
-            Form config = new Config_Form();
-            config.Show();
+            Form personalizar = new Personalizar();
+            personalizar.Show();
 
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace GestorTienda
 {
@@ -28,7 +29,7 @@ namespace GestorTienda
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        private void InitializeComponent(string ruta)
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.button1 = new System.Windows.Forms.Button();
@@ -110,7 +111,14 @@ namespace GestorTienda
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::GestorTienda.Properties.Resources.logo;
+            if (ruta.Equals(null) || ruta.Equals(""))
+            {
+                this.pictureBox1.Image = global::GestorTienda.Properties.Resources.logo;
+            }
+            else
+            {
+                this.pictureBox1.Image = Image.FromFile(ruta);
+            }
             this.pictureBox1.Location = new System.Drawing.Point(283, 25);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(207, 176);

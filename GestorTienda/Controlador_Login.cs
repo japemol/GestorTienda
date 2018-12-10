@@ -31,13 +31,14 @@ namespace GestorTienda
                 comando.Parameters.AddWithValue("@usuario", usr);
 
                 MySqlDataReader reader = comando.ExecuteReader();
+                EncryptAndDecrypt decrypt = new EncryptAndDecrypt();
 
                  if (reader.Read())
                  {
                 string usuario = reader.GetString(0);
                 string password = reader.GetString(1);
 
-                    password = Decrypt(password);
+                    password = decrypt.Decrypt(password);
 
 
                 if (usuario.Equals(usr)&&password.Equals(pass))
@@ -51,35 +52,9 @@ namespace GestorTienda
             
         }
 
-        readonly string key = " gc % 3ñXap{g9KgDntSN@3";
+        
 
-        private string Decrypt( string password)
-        {
-
-            byte[] passByte = Convert.FromBase64String(password);
-            byte[] keyByte;
-
-                 MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
-
-                keyByte = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
-                md5.Clear();
-
-            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
-
-            tdes.Key = keyByte;
-            tdes.Mode = CipherMode.ECB;
-            tdes.Padding = PaddingMode.PKCS7;
-
-            ICryptoTransform transform = tdes.CreateDecryptor();
-
-            byte[] passDecrypt = transform.TransformFinalBlock(passByte, 0, passByte.Length);
-
-            tdes.Clear();
-
-            password = UTF8Encoding.UTF8.GetString(passDecrypt, 0, passDecrypt.Length);
-
-            return password;
-        }
+       
 
         public string GetPrivilegios(string usuario)
         {

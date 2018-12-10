@@ -26,10 +26,17 @@ namespace GestorTienda
                 string passwd = nodo1[0].InnerText;
                 string nombreDB = nodo2[0].InnerText;
 
-               
+                EncryptAndDecrypt decrypt = new EncryptAndDecrypt();
+
+                string pass = decrypt.Decrypt(passwd);
+
+                if(pass == null)
+                {
+                    pass = "";
+                }
                 
 
-                MySqlConnection conectar = new MySqlConnection("server=127.0.0.1; database="+ nombreDB +"; Uid="+usuario+"; pwd="+passwd+";");
+                MySqlConnection conectar = new MySqlConnection("server=127.0.0.1; database="+ nombreDB +"; Uid="+usuario+"; pwd="+pass+";");
 
                     conectar.Open();
                     return conectar;
