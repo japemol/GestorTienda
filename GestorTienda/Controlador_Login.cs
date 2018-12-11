@@ -13,6 +13,10 @@ namespace GestorTienda
     {
         public bool Login(string usr, string pass)
         {
+            try
+            {
+
+            
             bool entrar = false;
             if(!(usr.Equals("") || pass.Equals("")))
             {
@@ -49,7 +53,14 @@ namespace GestorTienda
                }
             }
             return entrar;
-            
+            }catch(Exception e)
+            {
+                e.GetBaseException();
+                MessageBox.Show("ERROR FATAL: \n Consulta con el administrador del sistema");
+
+                return false;
+            }
+
         }
 
         

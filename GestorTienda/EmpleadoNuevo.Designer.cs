@@ -35,7 +35,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox_cp = new System.Windows.Forms.TextBox();
             this.textBox_direccion = new System.Windows.Forms.TextBox();
             this.textBox_apellido2 = new System.Windows.Forms.TextBox();
             this.textBox_apellido1 = new System.Windows.Forms.TextBox();
@@ -56,6 +55,7 @@
             this.label11 = new System.Windows.Forms.Label();
             this.comboPrivilegios = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.textBox_cp = new System.Windows.Forms.MaskedTextBox();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,6 +74,7 @@
             this.textBox_correo.Name = "textBox_correo";
             this.textBox_correo.Size = new System.Drawing.Size(189, 20);
             this.textBox_correo.TabIndex = 28;
+            this.textBox_correo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label5
             // 
@@ -111,19 +112,13 @@
             this.label2.TabIndex = 23;
             this.label2.Text = "Primer Apellido*";
             // 
-            // textBox_cp
-            // 
-            this.textBox_cp.Location = new System.Drawing.Point(99, 171);
-            this.textBox_cp.Name = "textBox_cp";
-            this.textBox_cp.Size = new System.Drawing.Size(118, 20);
-            this.textBox_cp.TabIndex = 20;
-            // 
             // textBox_direccion
             // 
             this.textBox_direccion.Location = new System.Drawing.Point(99, 145);
             this.textBox_direccion.Name = "textBox_direccion";
             this.textBox_direccion.Size = new System.Drawing.Size(189, 20);
             this.textBox_direccion.TabIndex = 19;
+            this.textBox_direccion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_apellido2
             // 
@@ -131,6 +126,7 @@
             this.textBox_apellido2.Name = "textBox_apellido2";
             this.textBox_apellido2.Size = new System.Drawing.Size(189, 20);
             this.textBox_apellido2.TabIndex = 18;
+            this.textBox_apellido2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox_apellido1
             // 
@@ -138,9 +134,11 @@
             this.textBox_apellido1.Name = "textBox_apellido1";
             this.textBox_apellido1.Size = new System.Drawing.Size(189, 20);
             this.textBox_apellido1.TabIndex = 17;
+            this.textBox_apellido1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBox_cp);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.textBox_telefono);
             this.panel2.Controls.Add(this.label12);
@@ -159,7 +157,6 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.textBox_cp);
             this.panel2.Controls.Add(this.textBox_direccion);
             this.panel2.Controls.Add(this.textBox_apellido2);
             this.panel2.Controls.Add(this.textBox_apellido1);
@@ -184,6 +181,7 @@
             this.textBox_telefono.Name = "textBox_telefono";
             this.textBox_telefono.Size = new System.Drawing.Size(118, 20);
             this.textBox_telefono.TabIndex = 39;
+            this.textBox_telefono.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
@@ -200,6 +198,7 @@
             this.textBox_DNI.Name = "textBox_DNI";
             this.textBox_DNI.Size = new System.Drawing.Size(118, 20);
             this.textBox_DNI.TabIndex = 37;
+            this.textBox_DNI.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // button1
             // 
@@ -226,6 +225,7 @@
             this.textBox_password2.Name = "textBox_password2";
             this.textBox_password2.Size = new System.Drawing.Size(189, 20);
             this.textBox_password2.TabIndex = 34;
+            this.textBox_password2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox_password2.UseSystemPasswordChar = true;
             // 
             // label9
@@ -243,6 +243,7 @@
             this.textBox_password.Name = "textBox_password";
             this.textBox_password.Size = new System.Drawing.Size(189, 20);
             this.textBox_password.TabIndex = 32;
+            this.textBox_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBox_password.UseSystemPasswordChar = true;
             // 
             // label8
@@ -260,6 +261,7 @@
             this.textBox_usuario.Name = "textBox_usuario";
             this.textBox_usuario.Size = new System.Drawing.Size(189, 20);
             this.textBox_usuario.TabIndex = 30;
+            this.textBox_usuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label1
             // 
@@ -276,6 +278,7 @@
             this.textBox_nombre.Name = "textBox_nombre";
             this.textBox_nombre.Size = new System.Drawing.Size(118, 20);
             this.textBox_nombre.TabIndex = 16;
+            this.textBox_nombre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label11
             // 
@@ -308,6 +311,17 @@
             this.label13.TabIndex = 24;
             this.label13.Text = "Privilegios";
             // 
+            // textBox_cp
+            // 
+            this.textBox_cp.Location = new System.Drawing.Point(99, 171);
+            this.textBox_cp.Mask = "999999999";
+            this.textBox_cp.Name = "textBox_cp";
+            this.textBox_cp.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.textBox_cp.Size = new System.Drawing.Size(118, 20);
+            this.textBox_cp.TabIndex = 41;
+            this.textBox_cp.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox_cp.ValidatingType = typeof(int);
+            // 
             // EmpleadoNuevo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -336,7 +350,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox_cp;
         private System.Windows.Forms.TextBox textBox_direccion;
         private System.Windows.Forms.TextBox textBox_apellido2;
         private System.Windows.Forms.TextBox textBox_apellido1;
@@ -357,5 +370,6 @@
         private System.Windows.Forms.TextBox textBox_telefono;
         private System.Windows.Forms.ComboBox comboPrivilegios;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.MaskedTextBox textBox_cp;
     }
 }

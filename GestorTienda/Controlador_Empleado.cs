@@ -30,11 +30,11 @@ namespace GestorTienda
                 datos[0] = reader.GetString(0);
                 datos[1] = reader.GetString(1);
                 datos[2] = reader.GetString(2);
-                datos[3] = reader.GetString(3);
+                try { datos[3] = reader.GetString(3); } catch (Exception e) { e.GetBaseException(); datos[3] = ""; }
                 datos[4] = reader.GetString(4);
                 datos[5] = reader.GetString(5);
                 datos[6] = reader.GetString(6);
-                datos[7] = reader.GetString(7);
+                try { datos[7] = reader.GetString(7); } catch (Exception e) { e.GetBaseException(); datos[7] = ""; }
                 datos[8] = reader.GetString(8);
                 
             }

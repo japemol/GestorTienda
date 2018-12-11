@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Configuration;
 using System.Xml;
+using System.IO;
 
 namespace GestorTienda
 {
@@ -48,8 +49,15 @@ namespace GestorTienda
         {
             EncryptAndDecrypt encrypt = new EncryptAndDecrypt();
 
-            encrypt.GenerarKey();
+            if (!File.Exists("key.key"))
+            {
+                encrypt.GenerarKey();
+            }
 
+            if (!(usuario_text.Text.Equals("") || nombredb_text.Equals("")))
+            {
+
+            
             XmlTextWriter escribir = new XmlTextWriter(@"ConfiguracionDB.xml", Encoding.UTF8);
             escribir.Formatting = Formatting.Indented;
             escribir.WriteStartDocument();
@@ -84,7 +92,12 @@ namespace GestorTienda
             this.Close();
 
             Tablas();
-           
+            }
+            else
+            {
+                MessageBox.Show("Los campos Usuario y Nombre DB no pueden estar vacios");
+            }
+
         }
 
         private void Tablas()

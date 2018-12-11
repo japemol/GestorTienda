@@ -190,7 +190,7 @@ namespace GestorTienda
 
                     MySqlCommand comando = conexion.CreateCommand();
 
-                    string query = "DELETE FROM clientes where dni=@dni";
+                    string query = "DELETE FROM empleados where dni=@dni";
 
                     try
                     {

@@ -120,13 +120,22 @@ namespace GestorTienda
 
             ICryptoTransform transform = tdes.CreateDecryptor();
 
-            byte[] passDecrypt = transform.TransformFinalBlock(passByte, 0, passByte.Length);
+            try { byte[] passDecrypt = transform.TransformFinalBlock(passByte, 0, passByte.Length); 
 
             tdes.Clear();
 
             password = UTF8Encoding.UTF8.GetString(passDecrypt, 0, passDecrypt.Length);
 
-            return password;
+                return password;
+            }
+            catch (Exception e) {
+
+                e.GetBaseException();
+                MessageBox.Show("ERROR FATAL: \n La clave de encriptación ha cambiado, consulta con el administrador");
+
+                return password; };
+
+            
         }
     }
 }

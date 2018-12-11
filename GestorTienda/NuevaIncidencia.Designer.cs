@@ -43,6 +43,7 @@
             this.text_incidencia.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.text_incidencia.ForeColor = System.Drawing.Color.Black;
             this.text_incidencia.Location = new System.Drawing.Point(39, 3);
+            this.text_incidencia.MaxLength = 200;
             this.text_incidencia.Name = "text_incidencia";
             this.text_incidencia.Size = new System.Drawing.Size(691, 362);
             this.text_incidencia.TabIndex = 0;

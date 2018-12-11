@@ -48,9 +48,12 @@ namespace GestorTienda
 
             }catch(Exception e)
             {
-               
-                MessageBox.Show("Imposible conectar con la base de datos \n" + e.Message.ToString());
-                Application.Exit();
+                e.GetBaseException();
+                MessageBox.Show("Imposible conectar con la base de datos \nCompruebe que el servidor que contiene la base de datos de MySql sea accesible, de lo contrario, contacte con un administrador.\nSi no sabe lo que esta haciendo no cambie la configuración simplemente cierre la ventana");
+
+                Form conf = new Config_Form();
+                conf.Show();
+                
                 return null;
             } 
         }
