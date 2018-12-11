@@ -76,7 +76,7 @@ namespace GestorTienda
             {
                
 
-                XmlDocument xruta = new XmlDocument();
+               
 
 
                 try { xDoc.Load(@"personalizar.xml"); } catch (Exception e) { e.GetBaseException(); };
@@ -95,7 +95,7 @@ namespace GestorTienda
             }
             else
             {
-                XmlDocument xruta = new XmlDocument();
+                
 
 
                 try { xDoc.Load(@"personalizar.xml"); } catch (Exception e) { e.GetBaseException(); };
