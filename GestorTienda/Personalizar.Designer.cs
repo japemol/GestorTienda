@@ -144,6 +144,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Aceptar);
             this.Name = "Personalizar";
+            this.ShowIcon = false;
             this.Text = "Personalizar";
             this.ResumeLayout(false);
             this.PerformLayout();

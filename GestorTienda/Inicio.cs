@@ -26,9 +26,31 @@ namespace GestorTienda
 
             ComprobarPersonalizacion();
             
-            InitializeComponent(color1, color2, ruta);
+            InitializeComponent();
             this.privilegios = privilegios;
+
+            if(!(color1 == null || color2 == null || ruta.Equals("") || ruta.Equals(null)))
+            {
+                CambiarApariencia();
+            }
             
+        }
+
+        private void CambiarApariencia()
+        {
+            panel1.BackColor = color1;
+            panel2.BackColor = color1;
+            panel3.BackColor = color1;
+            panel4.BackColor = color1;
+            
+            textBox1.ForeColor = color2;
+            textBox1.BackColor = color1;
+            empleados.ForeColor = color2;
+            empleados.BackColor = color1;
+
+            pictureBox2.Image = Image.FromFile(ruta);
+            
+
         }
 
         private void ComprobarPersonalizacion()

@@ -29,9 +29,8 @@ namespace GestorTienda
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent(string ruta)
+        private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxUser = new System.Windows.Forms.TextBox();
@@ -111,14 +110,7 @@ namespace GestorTienda
             // 
             // pictureBox1
             // 
-            if (ruta.Equals(null) || ruta.Equals(""))
-            {
-                this.pictureBox1.Image = global::GestorTienda.Properties.Resources.logo;
-            }
-            else
-            {
-                this.pictureBox1.Image = Image.FromFile(ruta);
-            }
+            this.pictureBox1.Image = global::GestorTienda.Properties.Resources.logo;
             this.pictureBox1.Location = new System.Drawing.Point(283, 25);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(207, 176);
@@ -139,8 +131,8 @@ namespace GestorTienda
             this.Controls.Add(this.button1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
+            this.ShowIcon = false;
             this.Text = "Login";
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.config)).EndInit();

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,10 +28,27 @@ namespace GestorTienda
                 Form config = new Config_Form();
                 config.Show();
             }
+            InitializeComponent();
 
+            try
+            {
+                if (!(ruta.Equals("")) || (ruta == null))
+                {
+                    CambiarLogo();
+                }
+            }catch(Exception e)
+            {
+                e.GetBaseException();
+            }
+            
 
-            InitializeComponent(ruta);
+        }
 
+        private void CambiarLogo()
+        {
+
+            pictureBox1.Image = Image.FromFile(ruta);
+           
         }
 
         private bool ComprobarConfiguracion()

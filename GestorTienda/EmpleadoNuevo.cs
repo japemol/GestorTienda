@@ -43,6 +43,7 @@ namespace GestorTienda
 
                 
                     ControladorEmpleados controlador = new ControladorEmpleados();
+                    
 
                     controlador.NuevoEmpleado(dni,nombre,apellido1,apellido2,telefono,direccion,cp,usuario,password,correo,privilegios);
 

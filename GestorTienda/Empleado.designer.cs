@@ -352,6 +352,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Empleado";
+            this.ShowIcon = false;
             this.Text = "Empleado";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

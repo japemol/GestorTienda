@@ -31,13 +31,8 @@ namespace GestorTienda
         /// Método necesario para admitir el Diseñador. No se puede modificar
         /// el contenido de este método con el editor de código.
         /// </summary>
-        private void InitializeComponent(Color color1, Color color2, string ruta)
+        private void InitializeComponent()
         {
-            
-            
-            
-
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -53,8 +48,8 @@ namespace GestorTienda
             this.SuspendLayout();
             // 
             // panel1
-            //
-            this.panel1.BackColor = color1;
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -63,7 +58,7 @@ namespace GestorTienda
             // 
             // panel2
             // 
-            this.panel2.BackColor = color1;
+            this.panel2.BackColor = System.Drawing.Color.Gray;
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.pictureBox2);
@@ -84,7 +79,7 @@ namespace GestorTienda
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = color1;
+            this.textBox1.BackColor = System.Drawing.Color.Gray;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -107,7 +102,7 @@ namespace GestorTienda
             // 
             // empleados
             // 
-            this.empleados.BackColor = color1;
+            this.empleados.BackColor = System.Drawing.Color.Gray;
             this.empleados.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.empleados.Enabled = false;
             this.empleados.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,15 +116,7 @@ namespace GestorTienda
             // 
             // pictureBox2
             // 
-            if (ruta.Equals(null) || ruta.Equals(""))
-            {
-                this.pictureBox2.Image = global::GestorTienda.Properties.Resources.logo;
-            }
-            else
-            {
-                this.pictureBox2.Image = Image.FromFile(ruta);
-            }
-            
+            this.pictureBox2.Image = global::GestorTienda.Properties.Resources.logo;
             this.pictureBox2.Location = new System.Drawing.Point(35, 6);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(123, 78);
@@ -139,6 +126,7 @@ namespace GestorTienda
             // 
             // panel_contenedor
             // 
+            this.panel_contenedor.BackColor = System.Drawing.Color.White;
             this.panel_contenedor.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_contenedor.Location = new System.Drawing.Point(200, 50);
             this.panel_contenedor.Name = "panel_contenedor";
@@ -154,9 +142,9 @@ namespace GestorTienda
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Home";
+            this.ShowIcon = false;
             this.Text = "Tienda";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Home_FormClosed);
             this.panel2.ResumeLayout(false);

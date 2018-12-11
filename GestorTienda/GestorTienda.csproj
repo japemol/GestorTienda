@@ -177,7 +177,6 @@
     <Content Include="ConfiguracionDB.xml">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Resources\%24this.Icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

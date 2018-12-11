@@ -21,7 +21,8 @@ namespace GestorTienda
         private void Aceptar_Click(object sender, EventArgs e)
         {
             GuardarConfiguracion();
-            
+
+            this.Close();           
 
         }
 

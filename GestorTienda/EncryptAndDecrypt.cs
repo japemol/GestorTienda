@@ -13,7 +13,21 @@ namespace GestorTienda
     {
         string key;
 
-
+        private string GenerarCodigo()
+        {
+            Random obj = new Random();
+            string sCadena = "abc*d567ef(ghijk$lmn)oª\\pq{rsNOP/Qt!uvwx\"y=zAB}CD?EF^~.,-çÇGHñÑ%IJKLºMRST¡?UVWXY&Z+1234@890";
+            int longitud = sCadena.Length;
+            char cletra;
+            int nlongitud = 256;
+            string sNuevacadena = string.Empty;
+            for (int i = 0; i < nlongitud; i++)
+            {
+                cletra = sCadena[obj.Next(longitud)];
+                sNuevacadena += cletra.ToString();
+            }
+            return sNuevacadena;
+        }
 
         public void GenerarKey()
         {
@@ -21,11 +35,11 @@ namespace GestorTienda
             {
 
             
-            int longitud = 7;
-            Guid miGuid = Guid.NewGuid();
-            string token = Convert.ToBase64String(miGuid.ToByteArray());
-            token = token.Replace("=", "").Replace("+", "");
-            key = token.Substring(0, longitud);
+            
+            
+                string key = GenerarCodigo();
+
+            
 
                 try
                 {
@@ -66,10 +80,12 @@ namespace GestorTienda
 
             md5.Clear();
 
-            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider();
-            tdes.Key = keyByte;
-            tdes.Mode = CipherMode.ECB;
-            tdes.Padding = PaddingMode.PKCS7;
+            TripleDESCryptoServiceProvider tdes = new TripleDESCryptoServiceProvider
+            {
+                Key = keyByte,
+                Mode = CipherMode.ECB,
+                Padding = PaddingMode.PKCS7
+            };
 
             ICryptoTransform transform = tdes.CreateEncryptor();
 

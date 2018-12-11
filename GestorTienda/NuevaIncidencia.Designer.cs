@@ -85,6 +85,7 @@
             this.Controls.Add(this.label9);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NuevaIncidencia";
+            this.ShowIcon = false;
             this.Text = "Nueva Incidencia";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);

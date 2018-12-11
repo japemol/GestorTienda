@@ -87,6 +87,7 @@
             this.Controls.Add(this.yes);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfirmacionAdmin";
+            this.ShowIcon = false;
             this.Text = "ConfirmacionAdmin";
             this.ResumeLayout(false);
             this.PerformLayout();

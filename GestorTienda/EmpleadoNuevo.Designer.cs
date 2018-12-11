@@ -288,6 +288,8 @@
             // 
             // comboPrivilegios
             // 
+            this.comboPrivilegios.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboPrivilegios.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboPrivilegios.FormattingEnabled = true;
             this.comboPrivilegios.Items.AddRange(new object[] {
             "vendedor",
@@ -318,6 +320,7 @@
             this.Controls.Add(this.label11);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EmpleadoNuevo";
+            this.ShowIcon = false;
             this.Text = "Empleado Nuevo";
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
